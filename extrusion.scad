@@ -1,9 +1,15 @@
-module extrusion(sidelen, height, notch, thickness, center_diameter,
-            center_sidelen, long_base) {
+module extrusion(sidelen, 
+                 height, 
+                 notch, 
+                 thickness, 
+                 center_diameter,
+                 center_sidelen, 
+                 long_base, 
+                 center=false) {
     short_base = long_base - (sidelen - center_sidelen - thickness * 2);
 
-    difference() {
-        translate([-sidelen / 2, -sidelen / 2, 0]) {
+    module constructor() {
+        difference() {        
             polyhedron(
                 points=[
                     // 0
@@ -146,7 +152,7 @@ module extrusion(sidelen, height, notch, thickness, center_diameter,
                     // 58
                     [sidelen - (sidelen - short_base) / 2, sidelen - (sidelen - center_sidelen) / 2, height],
 
-                    // 59
+                    // 59            translate([posx, posy, 0]) {
                     [(sidelen - short_base) / 2, sidelen - (sidelen - center_sidelen) / 2, height],
                     // 60
                     [(sidelen - long_base) / 2, sidelen - thickness, height],
@@ -232,11 +238,19 @@ module extrusion(sidelen, height, notch, thickness, center_diameter,
                     44, 43, 42, 41, 40, 39, 38, 37, 36],
                 ]
             );
-        }
-        translate([0, 0, height / 2]) {
-            cylinder(height, d=center_diameter, center=true);
+            translate([sidelen / 2, sidelen / 2, height / 2]) {
+                cylinder(height, d=center_diameter, center=true);
+            }
         }
     }
+
+    if (center) {
+        translate([-sidelen / 2, -sidelen / 2, -height / 2]) {
+            constructor();
+        }
+    } else {
+        constructor();
+    }      
 }
 
 
@@ -246,4 +260,5 @@ extrusion(sidelen=20,
           thickness=1.5, 
           center_diameter=6.0, 
           center_sidelen=10,
-          long_base=13.3);
+          long_base=14,
+          center=true);

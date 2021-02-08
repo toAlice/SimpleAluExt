@@ -104,13 +104,14 @@ module tslide(length,
     }
 }
 
-tslide(length=110,
-       width=102,
-       height=50,
-       top_length=110,
-       top_width=60,
-       top_height=10,
-       bottom_width=70,
-       slope_height=15,
-       screw_diameter=30,
-       center=false);
+// example:
+// tslide(length=110,
+//        width=102,
+//        height=50,
+//        top_length=110,
+//        top_width=60,
+//        top_height=10,
+//        bottom_width=70,
+//        slope_height=15,
+//        screw_diameter=30,
+//        center=false);

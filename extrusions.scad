@@ -6,150 +6,116 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
 
     module extru_main() {
         difference() {
-            polygon(
+            polygon([
+                // 0
+                [ 0, sidelen ],
+
+                // 1
+                [ (sidelen - notch) / 2, sidelen ],
+                // 2
+                [ (sidelen - notch) / 2, sidelen - border_thickness ],
+                // 3
+                [ (sidelen - long_base) / 2, sidelen - border_thickness ],
+                // 4
                 [
-                    // 0
-                    [ 0, sidelen ],
+                    (sidelen - short_base) / 2,
+                    sidelen - (sidelen - center_sidelen) / 2
+                ],
 
-                    // 1
-                    [ (sidelen - notch) / 2, sidelen ],
-                    // 2
-                    [
-                        (sidelen - notch) / 2, sidelen - border_thickness
-                    ],
-                    // 3
-                    [
-                        (sidelen - long_base) / 2,
-                        sidelen - border_thickness
-                    ],
-                    // 4
-                    [
-                        (sidelen - short_base) / 2,
-                        sidelen - (sidelen - center_sidelen) / 2
-                    ],
+                // 5
+                [
+                    sidelen - (sidelen - short_base) / 2,
+                    sidelen - (sidelen - center_sidelen) / 2
+                ],
+                // 6
+                [
+                    sidelen - (sidelen - long_base) / 2, sidelen -
+                    border_thickness
+                ],
+                // 7
+                [ sidelen - (sidelen - notch) / 2, sidelen - border_thickness ],
+                // 8
+                [ sidelen - (sidelen - notch) / 2, sidelen ],
 
-                    // 5
-                    [
-                        sidelen - (sidelen - short_base) / 2,
-                        sidelen - (sidelen - center_sidelen) / 2
-                    ],
-                    // 6
-                    [
-                        sidelen - (sidelen - long_base) / 2,
-                        sidelen - border_thickness
-                    ],
-                    // 7
-                    [
-                        sidelen - (sidelen - notch) / 2,
-                        sidelen - border_thickness
-                    ],
-                    // 8
-                    [ sidelen - (sidelen - notch) / 2, sidelen ],
+                // 9
+                [ sidelen, sidelen ],
 
-                    // 9
-                    [ sidelen, sidelen ],
+                // 10
+                [ sidelen, sidelen - (sidelen - notch) / 2 ],
+                // 11
+                [ sidelen - border_thickness, sidelen - (sidelen - notch) / 2 ],
+                // 12
+                [
+                    sidelen - border_thickness,
+                    sidelen - (sidelen - long_base) / 2
+                ],
+                // 13
+                [
+                    sidelen - (sidelen - center_sidelen) / 2,
+                    sidelen - (sidelen - short_base) / 2
+                ],
 
-                    // 10
-                    [ sidelen, sidelen - (sidelen - notch) / 2 ],
-                    // 11
-                    [
-                        sidelen - border_thickness,
-                        sidelen - (sidelen - notch) / 2
-                    ],
-                    // 12
-                    [
-                        sidelen - border_thickness,
-                        sidelen - (sidelen - long_base) / 2
-                    ],
-                    // 13
-                    [
-                        sidelen - (sidelen - center_sidelen) / 2,
-                        sidelen - (sidelen - short_base) / 2
-                    ],
+                // 14
+                [
+                    sidelen - (sidelen - center_sidelen) / 2,
+                    (sidelen - short_base) / 2
+                ],
+                // 15
+                [ sidelen - border_thickness, (sidelen - long_base) / 2 ],
+                // 16
+                [ sidelen - border_thickness, (sidelen - notch) / 2 ],
+                // 17
+                [ sidelen, (sidelen - notch) / 2 ],
 
-                    // 14
-                    [
-                        sidelen - (sidelen - center_sidelen) / 2,
-                        (sidelen - short_base) / 2
-                    ],
-                    // 15
-                    [
-                        sidelen - border_thickness,
-                        (sidelen - long_base) / 2
-                    ],
-                    // 16
-                    [
-                        sidelen - border_thickness, (sidelen - notch) / 2
-                    ],
-                    // 17
-                    [ sidelen, (sidelen - notch) / 2 ],
+                // 18
+                [ sidelen, 0 ],
 
-                    // 18
-                    [ sidelen, 0 ],
+                // 19
+                [ sidelen - (sidelen - notch) / 2, 0 ],
+                // 20
+                [ sidelen - (sidelen - notch) / 2, border_thickness ],
+                // 21
+                [ sidelen - (sidelen - long_base) / 2, border_thickness ],
+                // 22
+                [
+                    sidelen - (sidelen - short_base) / 2,
+                    (sidelen - center_sidelen) / 2
+                ],
 
-                    // 19
-                    [ sidelen - (sidelen - notch) / 2, 0 ],
-                    // 20
-                    [
-                        sidelen - (sidelen - notch) / 2, border_thickness
-                    ],
-                    // 21
-                    [
-                        sidelen - (sidelen - long_base) / 2,
-                        border_thickness
-                    ],
-                    // 22
-                    [
-                        sidelen - (sidelen - short_base) / 2,
-                        (sidelen - center_sidelen) / 2
-                    ],
+                // 23
+                [ (sidelen - short_base) / 2, (sidelen - center_sidelen) / 2 ],
+                // 24
+                [ (sidelen - long_base) / 2, border_thickness ],
+                // 25
+                [ (sidelen - notch) / 2, border_thickness ],
+                // 26
+                [ (sidelen - notch) / 2, 0 ],
 
-                    // 23
-                    [
-                        (sidelen - short_base) / 2,
-                        (sidelen - center_sidelen) / 2
-                    ],
-                    // 24
-                    [ (sidelen - long_base) / 2, border_thickness ],
-                    // 25
-                    [ (sidelen - notch) / 2, border_thickness ],
-                    // 26
-                    [ (sidelen - notch) / 2, 0 ],
+                // 27
+                [ 0, 0 ],
 
-                    // 27
-                    [ 0, 0 ],
+                // 28
+                [ 0, (sidelen - notch) / 2 ],
+                // 29
+                [ border_thickness, (sidelen - notch) / 2 ],
+                // 30
+                [ border_thickness, (sidelen - long_base) / 2 ],
+                // 31
+                [ (sidelen - center_sidelen) / 2, (sidelen - short_base) / 2 ],
 
-                    // 28
-                    [ 0, (sidelen - notch) / 2 ],
-                    // 29
-                    [ border_thickness, (sidelen - notch) / 2 ],
-                    // 30
-                    [ border_thickness, (sidelen - long_base) / 2 ],
-                    // 31
-                    [
-                        (sidelen - center_sidelen) / 2,
-                        (sidelen - short_base) / 2
-                    ],
-
-                    // 32
-                    [
-                        (sidelen - center_sidelen) / 2,
-                        sidelen - (sidelen - short_base) / 2 
-                    ],
-                    // 33
-                    [
-                        border_thickness,
-                        sidelen - (sidelen - long_base) / 2
-                    ],
-                    // 34
-                    [
-                        border_thickness, sidelen - (sidelen - notch) / 2
-                    ],
-                    // 35
-                    [ 0, sidelen - (sidelen - notch) / 2 ]
-                ]
-            );
-            translate([ sidelen / 2, sidelen / 2]) {
+                // 32
+                [
+                    (sidelen - center_sidelen) / 2,
+                    sidelen - (sidelen - short_base) / 2
+                ],
+                // 33
+                [ border_thickness, sidelen - (sidelen - long_base) / 2 ],
+                // 34
+                [ border_thickness, sidelen - (sidelen - notch) / 2 ],
+                // 35
+                [ 0, sidelen - (sidelen - notch) / 2 ]
+            ]);
+            translate([ sidelen / 2, sidelen / 2 ]) {
                 circle(d = center_diameter);
             }
         }
@@ -164,14 +130,14 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
                         square(corner_outer);
                     }
                     translate([ 0, sidelen - corner_outer ]) {
-                        square(corner_outer);                    
+                        square(corner_outer);
                     }
                     translate(
                         [ sidelen - corner_outer, sidelen - corner_outer ]) {
-                        square(corner_outer);                    
+                        square(corner_outer);
                     }
                     translate([ sidelen - corner_outer, 0 ]) {
-                        square(corner_outer);                    
+                        square(corner_outer);
                     }
                 }
             }
@@ -185,14 +151,16 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
                 }
                 translate([
                     (corner_outer - corner_inner) / 2,
-                    sidelen - (corner_outer - corner_inner) / 2 - corner_inner
+                    sidelen - (corner_outer - corner_inner) / 2 -
+                    corner_inner
                 ]) {
                     // cube([ corner_inner, corner_inner, height ]);
                     square(corner_inner);
                 }
                 translate([
                     sidelen - (corner_outer - corner_inner) / 2 - corner_inner,
-                    sidelen - (corner_outer - corner_inner) / 2 - corner_inner
+                    sidelen - (corner_outer - corner_inner) / 2 -
+                    corner_inner
                 ]) {
                     // cube([ corner_inner, corner_inner, height ]);
                     square(corner_inner);
@@ -210,12 +178,12 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
 
     if (center) {
         translate([ -sidelen / 2, -sidelen / 2, -height / 2 ]) {
-            linear_extrude(height=height) {
+            linear_extrude(height = height) {
                 extru_cornors();
             }
         }
     } else {
-        linear_extrude(height=height) {
+        linear_extrude(height = height) {
             extru_cornors();
         }
     }

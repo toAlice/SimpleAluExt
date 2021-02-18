@@ -1,5 +1,5 @@
 module screw_thread(screw_length, thread_diameter, thread_pitch, thread = false,
-                    thread_flatness = 20) {
+                    thread_flatness = 12) {
     if (thread) {
         thread_radius = thread_diameter / 2;
         linear_extrude(height = screw_length, center = true, convexity = 10,

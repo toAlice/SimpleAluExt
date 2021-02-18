@@ -177,13 +177,13 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
     }
 
     if (center) {
-        translate([ -sidelen / 2, -sidelen / 2, -height / 2 ]) {
-            linear_extrude(height = height) {
+        translate([ -sidelen / 2, -sidelen / 2, -height / 2  - 0.01]) {
+            linear_extrude(height = height + 0.02) {
                 extru_cornors();
             }
         }
     } else {
-        linear_extrude(height = height) {
+        translate([0, 0, -0.01]) linear_extrude(height = height + 0.02) {
             extru_cornors();
         }
     }

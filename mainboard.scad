@@ -3,7 +3,7 @@ module atxmobo(form_factor = "ATX", screw = true) {
 
     module mobo_base() {
         difference() {
-            union() {
+            color("#3F3F3F") union() {
                 if (form_factor == "mITX") {
                     cube([ 170.18, 170.18, mobo_thickness ]);
                 } else if (form_factor == "mDTX") {
@@ -22,19 +22,19 @@ module atxmobo(form_factor = "ATX", screw = true) {
                 translate([ -3.302, 0, 0 ]) {
                     difference() {
                         cube([ 158.75, 35, 44.75 - 2.2352 ]);
-                        linear_extrude(44.75 - 2.2352)
-                            polygon([ [ 0, 15 ], [ 0, 35 ], [ 20, 35 ] ]);
-                        translate([ 158.75, 0, 0 ])
-                            linear_extrude(44.75 - 2.2352)
-                                polygon([ [ 0, 15 ], [ 0, 35 ], [ -20, 35 ] ]);
+                        translate([0, 0, - 0.01]) linear_extrude(44.75 - 2.2352 + 0.02)
+                            polygon([ [ 0 - 0.01, 15 - 0.01 ], [ 0 - 0.01, 35 + 0.01 ], [ 20 + 0.01, 35 + 0.01 ] ]);
+                        translate([ 158.75, 0, -0.01 ])
+                            linear_extrude(44.75 - 2.2352 + 0.02)
+                                polygon([ [ 0 + 0.01, 15 - 0.01 ], [ 0 + 0.01, 35 + 0.01 ], [ -20 - 0.01, 35 + 0.01 ] ]);
                         polyhedron(points =
                                        [
-                                           [ 0, 0, 44.75 - 2.2352 ],
-                                           [ 0, 35, 44.75 - 2.2352 ],
-                                           [ 158.75, 35, 44.75 - 2.2352 ],
-                                           [ 158.75, 0, 44.75 - 2.2352 ],
-                                           [ 158.75, 35, 44.75 - 2.2352 - 8 ],
-                                           [ 0, 35, 44.75 - 2.2352 - 8 ]
+                                           [ 0 - 0.01, 0 - 0.01, 44.75 - 2.2352 + 0.01 ],
+                                           [ 0 - 0.01, 35 + 0.01, 44.75 - 2.2352 + 0.01 ],
+                                           [ 158.75 + 0.01, 35 + 0.01, 44.75 - 2.2352 + 0.01 ],
+                                           [ 158.75 + 0.01, 0 - 0.01, 44.75 - 2.2352 + 0.01 ],
+                                           [ 158.75 + 0.01, 35 + 0.01, 44.75 - 2.2352 - 8 - 0.01 ],
+                                           [ 0 - 0.01, 35 + 0.01, 44.75 - 2.2352 - 8 - 0.01 ]
                                        ],
                                    faces = [
                                        [ 0, 1, 2, 3 ], [ 3, 2, 4 ],
@@ -46,58 +46,58 @@ module atxmobo(form_factor = "ATX", screw = true) {
             }
 
             { // screw holes
-                translate([ 6.35, 33.02, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 6.35, 33.02, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 6.35, 165.1, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 6.35, 165.1, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 6.35, 237.49, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 6.35, 237.49, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 6.35, 322.58, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
-                }
-
-                translate([ 163.83, 10.16, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
-                }
-                translate([ 163.83, 165.1, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
-                }
-                translate([ 163.83, 237.49, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
-                }
-                translate([ 163.83, 322.58, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 6.35, 322.58, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
 
-                translate([ 209.55, 10.16, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 163.83, 10.16, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
+                }
+                translate([ 163.83, 165.1, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
+                }
+                translate([ 163.83, 237.49, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
+                }
+                translate([ 163.83, 322.58, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
+                }
+
+                translate([ 209.55, 10.16, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
                 if (form_factor == "mATX") {
-                    translate([ 209.55, 165.1, 0 ]) {
-                        cylinder(h = mobo_thickness, r = 2.5);
+                    translate([ 209.55, 165.1, 0 - 0.01 ]) {
+                        cylinder(h = mobo_thickness + 0.02, r = 2.5);
                     }
                 }
 
                 if (form_factor == "mATX") {
-                    translate([ 209.55 + 20.32, 165.1, 0 ]) {
-                        cylinder(h = mobo_thickness, r = 2.5);
+                    translate([ 209.55 + 20.32, 165.1, 0 - 0.01 ]) {
+                        cylinder(h = mobo_thickness + 0.02, r = 2.5);
                     }
                 }
 
-                translate([ 288.29, 10.16, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 288.29, 10.16, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 288.29, 165.1, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 288.29, 165.1, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 288.29, 237.49, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 288.29, 237.49, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
-                translate([ 288.29, 322.58, 0 ]) {
-                    cylinder(h = mobo_thickness, r = 2.5);
+                translate([ 288.29, 322.58, 0 - 0.01 ]) {
+                    cylinder(h = mobo_thickness + 0.02, r = 2.5);
                 }
             }
         }
@@ -110,11 +110,11 @@ module atxmobo(form_factor = "ATX", screw = true) {
         module slot() {
             difference() {
                 cube([ 7.2, 89, 11 ]);
-                translate([ (7.2 - slot_width) / 2, 2, 11 - slot_depth ]) {
-                    cube([ slot_width, 11.65, slot_depth ]);
+                translate([ (7.2 - slot_width) / 2, 2, 11 - slot_depth - 0.01 ]) {
+                    cube([ slot_width, 11.65, slot_depth + 0.02 ]);
                 }
-                translate([ (7.2 - slot_width) / 2, 15.35, 11 - slot_depth ]) {
-                    cube([ slot_width, 70, slot_depth ]);
+                translate([ (7.2 - slot_width) / 2, 15.35, 11 - slot_depth - 0.01 ]) {
+                    cube([ slot_width, 70, slot_depth + 0.02 ]);
                 }
             }
             translate([ 0, 89, 0 ]) rotate([ 90, 0, 90 ]) linear_extrude(7.2)
@@ -127,12 +127,12 @@ module atxmobo(form_factor = "ATX", screw = true) {
                 polygon([ [ -1.5, 0 ], [ -1.8, 0.8 ], [ 0, 3.6 ], [ 0, 0 ] ]);
         }
 
-        translate([ -3.6, -14.5, 0 ]) slot();
+        translate([ -3.6, -14.5, 0 ]) color("#3F1F1F") slot();
     }
 
     module screws() {
         module m4screw(screw_length = 8) {
-            union() {
+            color("#1F1F1F") union() {
                 translate([ 0, 0, 4 ]) {
                     screw_head(head_thickness = 2.4, head_diameter = 8);
                 }

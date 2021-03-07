@@ -1,6 +1,6 @@
 ## About
 
-A barebone OpenSCAD Module for Aluminum extrusion.
+An aluminum extrusion module for OpenSCAD.
 
 ## Screenshots
 

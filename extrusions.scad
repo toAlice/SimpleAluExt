@@ -126,7 +126,7 @@ module extrusion(sidelen, height, notch, border_thickness, arm_thickness,
             union() {
                 extru_main();
                 if (corner_outer > 0) {
-                    translate([ 0, sidelen - corner_outer ]) {
+                    translate([ 0, 0 ]) {
                         square(corner_outer);
                     }
                     translate([ 0, sidelen - corner_outer ]) {
